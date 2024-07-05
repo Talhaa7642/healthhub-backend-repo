@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppointmentsModule } from './appointments/appointments.module';
 import { ContactsModule } from './contacts/contacts.module';
-
+import * as dotenv from 'dotenv';
+dotenv.config();
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://mahadahmad921:WjQ0M0JClPiGnSAr@cluster0.t9wgtar.mongodb.net/'),
+    MongooseModule.forRoot(process.env.MONGODB_URL),
     AppointmentsModule,
     ContactsModule,
   ],
